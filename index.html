@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Formulario</title>
+</head>
+<body>
+    <form action="recupera.php" method="get">
+        Nombre:<input type="text" name="nombre" placeholder="Pon el nombre">
+        <br>
+        Apellido: <input type="text" name="apellido" placeholder="Introduce el apellido">
+        <br>
+        <input type="radio" id="h" name="sexo" value="hombre">
+        <label for="h">Hombre</label><br>
+        <input type="radio" id="m" name="sexo" value="mujer"><label for="m">Mujer</label><br>
+        <br>
+        <input type="date" name="fecha"> 
+        <br>
+        <input type="checkbox" id="futbol" name="aficion[]" value="Futbol">
+        <label for="futbol">Futbol</label> 
+        <input type="checkbox" id="leer" name="aficion[]" value="Leer">
+        <label for="leer">Leer </label>
+        <input type="checkbox" id="play" name="aficion[]" value="Play">
+        <label for="play">Jugar a la play</label>  
+        <input type="submit" value="Enviar">
+    </form>
+
+
+</body>
+</html>
