@@ -13,7 +13,8 @@ while(!feof($archivo_contactos))
             $texto_json=$texto_json."\"nombre\":";
             $texto_json=$texto_json."\"$nombre\",";
             $texto_json=$texto_json."\"telefono\":";
-            $texto_json=$texto_json."\"$telefono\"},";
+            $telefono_trimado=trim($telefono);
+            $texto_json=$texto_json."\"$telefono_trimado\"},";
         }
 
 }

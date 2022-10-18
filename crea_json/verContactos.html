@@ -5,28 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-        // 1. Crea un nuevo objeto XMLHttpRequest
-let xhr = new XMLHttpRequest();
-
-// 2. Configuración: solicitud GET para la URL /article/.../load
-xhr.open('GET', 'http://192.168.12.129/crea_json/json_contactos.php');
-
-// 3. Envía la solicitud a la red
-xhr.send();
-
-// 4. Esto se llamará después de que la respuesta se reciba
-xhr.onload = function() {
-  if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
-    alert("Error ${xhr.status}: ${xhr.statusText}"); // ej. 404: No encontrado
-  } else { // muestra el resultado
-    alert("Hecho, obtenido:"+xhr.responseText); // Respuesta del servidor
-  }
-};
-alert("¿Cuándo me ejecuto?");
-    </script>
+   
 </head>
 <body>
     
 </body>
+<script>
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://192.168.12.129/crea_json/json_contactos.php');
+    xhr.send();
+    xhr.onload = function() {
+      if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
+        alert("Error ${xhr.status}: ${xhr.statusText}"); // ej. 404: No encontrado
+      } else { // muestra el resultado
+        pintarTabla(xhr.responseText); // Respuesta del servidor
+      }
+    };
+    document.getElementsByTagName("body")[0].innerHTML="<p>Hola amigossss</p>";
+    function pintarTabla(texto_json_tabla)
+    {
+        obj_json=JSON.parse(texto_json_tabla);
+        texto_tabla="<table>";
+        for (i=0; i<obj_json.amigos.length; i++)
+        {
+            obj_amigo=obj_json.amigos[i];
+            texto_tabla=texto_tabla+"<tr><td>"+obj_json.amigos[i].nombre+"</td>";
+                texto_tabla=texto_tabla+"<td>"+obj_amigo.telefono+"</td></tr>";  
+
+        }
+        texto_tabla=texto_tabla+"</table>";
+        
+       document.getElementsByTagName("body")[0].innerHTML=texto_tabla;
+    }
+        </script>
 </html>
