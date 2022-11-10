@@ -1,8 +1,8 @@
 <?php
-$usuario="root";
+$usuario="";
 $password="";
-$nombre_bd="miagenda";
-$host="localhost";
+$nombre_bd="";
+$host="";
 class contacto{
     public $nombre;
     public $telefono;
@@ -20,9 +20,31 @@ class contacto{
         return $this->telefono;
     }
 }
+function cargarDatosIniciales(){
+    $archivo=fopen("config.ini", "r");
+    global $usuario, $password, $nombre_bd,$host;
+    while(!feof($archivo))
+    {
+        $linea=fgets($archivo);
+        $arr=explode("=", $linea);
+        // $arr[0] es el nombre de la clave
+        // $arr[1] es el valor
+        $array_datos["$arr[0]"]=$arr[1];
+        
+    }
+    $usuario= trim($array_datos["usuario"]);
+    $password=trim($array_datos["password"]);
+    $nombre_bd=trim($array_datos["nombrebd"]);
+    $host=trim($array_datos["host"]);
+    /*$password="";
+$nombre_bd="miagenda";
+$host="localhost";*/
+
+}
 function inicializarBD()
 {
     global $usuario, $password, $nombre_bd, $host;
+    
     try{
         $conexion=new mysqli($host, $usuario
         ,  $password, $nombre_bd);

@@ -19,6 +19,7 @@
     </form>
     <?php
     include "funciones.php";
+    cargarDatosIniciales();
     inicializarBD();
     if (isset($_POST["nombre"]))
         {
