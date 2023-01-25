@@ -34,7 +34,7 @@ public class ServletRecuperaDatos extends HttpServlet {
 		String accion=request.getParameter("accion");
 		if (accion.equals("listar"))
 		{
-		ArrayList<String> contactos=AccesoDatos.leerDatos();
+		ArrayList<Contacto> contactos=AccesoDatos.leerDatos();
 		request.setAttribute("datos", contactos);
 		request.getRequestDispatcher("leercontactos.jsp").forward(request, response);
 		}
