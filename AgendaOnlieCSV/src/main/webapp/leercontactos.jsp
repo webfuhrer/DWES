@@ -1,4 +1,5 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="paqueteagenda.Contacto"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,8 +10,11 @@
 </head>
 <body>
 <%
-ArrayList<String> contactos=(ArrayList<String>)request.getAttribute("datos");
-
+ArrayList<Contacto> contactos=(ArrayList<Contacto>)request.getAttribute("datos");
+if (contactos==null)
+{
+	request.getRequestDispatcher("indice.jsp").forward(request,response);
+}
 %>
 <%=contactos %>
 <ul>
