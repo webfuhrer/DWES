@@ -9,10 +9,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+
+
 public class AccesoDatos {
 private static String ruta="D:\\comentarios.csv";
 	public static void grabarComentario(String usuario, String comentario) {
-	Comentario c=new Comentario(usuario, comentario, Calendar.getInstance());
+	Comentario c=new Comentario(usuario, comentario, Comentario.recuperarFechaFormateada());
 	File archivo=new File(ruta);
 	try {
 		FileWriter fw=new FileWriter(archivo, true);
@@ -39,7 +41,7 @@ private static String ruta="D:\\comentarios.csv";
 				String [] datos=linea.split(",");
 				String usuario=datos[0];
 				String comentario=datos[1];
-				Calendar fecha=Calendar.getInstance();
+				String fecha=datos[2];
 				Comentario c=new Comentario(usuario, comentario, fecha);
 				comentarios.add(c);
 				 linea=br.readLine();
