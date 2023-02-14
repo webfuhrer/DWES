@@ -11,8 +11,23 @@ ArrayList<String> marcas=(ArrayList<String>)request.getAttribute("marcas");
 <head>
 <meta charset="ISO-8859-1">
 <title>Concesionario</title>
+<script>
+function enviarDatos()
+{
+	
+	}
+function ponerOyente()
+{
+	var objeto_desplegable=document.getElementsByName("marca")[0];
+	objeto_desplegable.onchange=function(){
+		document.getElementsByTagName("form")[0].submit();
+	}
+}
+
+
+</script>
 </head>
-<body>
+<body onload="ponerOyente();">
 	<form action="Servlet" method="POST">
 	<%
 	String desplegable_modelos="";
