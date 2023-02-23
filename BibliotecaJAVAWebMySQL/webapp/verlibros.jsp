@@ -14,5 +14,7 @@
 String tabla_html=PintarHTML.pintarTabla(lista_libros);
 out.print(tabla_html);
 %>
+<br>
+<a href="Servlet?accion=insertarlibro">INSERTAR</a>
 </body>
 </html>
