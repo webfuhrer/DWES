@@ -32,4 +32,28 @@ public static String pintarTabla(ArrayList<Libro> lista_libros)
 	aux+="</table>";
 	return aux;
 }
+
+public static String crearDesplegable(ArrayList<Genero> lista_datos, String nombre_select, String elem_seleccionado)
+{
+	
+	String desplegable="<select name=\""+nombre_select+"\" onchange=verificarDesplegable();>\n";
+	String seleccionado="";
+	desplegable+="<option value=0 selected=true>Nuevo género</option> ";
+	for(Genero dato: lista_datos)
+	{
+		seleccionado="";
+		if (dato.equals(elem_seleccionado))
+		{
+			seleccionado="selected";
+		}
+		
+		desplegable+="<option value='"+dato.getId()+"' "+seleccionado+" >"+dato.getGenero()+"</option>\n";
+				
+	}
+	desplegable+="</select>";
+	return desplegable;
+}
+
+
+
 }

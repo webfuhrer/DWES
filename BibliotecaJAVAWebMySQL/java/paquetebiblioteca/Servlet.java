@@ -51,7 +51,34 @@ public class Servlet extends HttpServlet {
 			Libro libro=new Libro(titulo, genero, 0, 0);
 			AccesoDatos.insertarLibro(libro);
 			
+		}else if (accion.equals("nuevogenero"))
+		{//1-Recupero n_genero y titulo
+			String n_genero=request.getParameter("n_genero");
+			String titulo=request.getParameter("titulo");
+			
+			//2-Compruebo que n_genero no esté vacío
+			if (!n_genero.equals(""))
+			{
+				//3-Inserto n_genero en t_generos
+				int id_genero=AccesoDatos.insertarGenero(n_genero);
+				//4-Inserto el libro en t_libros
+				//4.1-Crear libro
+				Libro l=new Libro(titulo, String.valueOf(id_genero), 0, 0);
+				//5-Grabar libro
+				AccesoDatos.insertarLibro(l);
+			}
+			
 		}
+		else if (accion.equals("insertarlibro"))
+		{
+			//1-Recupero generos de BD
+			ArrayList<Genero> lista_generos=AccesoDatos.recuperarGeneros();
+			//2-Meto los generos en el atributo lista_generos
+			request.setAttribute("lista_generos", lista_generos);
+			//3-Le mando a insertarlibros.jsp
+			request.getRequestDispatcher("insertarlibros.jsp").forward(request, response);
+		}
+		//Lo que hay a continuación siempre se ejecuta
 		ArrayList<Libro> lista_libros=AccesoDatos.recuperarLibros();
 		request.setAttribute("lista_libros", lista_libros);
 		request.getRequestDispatcher("verlibros.jsp").forward(request, response);
