@@ -19,9 +19,16 @@ String tabla=PintarHTML.crearTabla(lista_entrenos);
 		<%=tabla %>
 		<br>
 		<form action="Servlet" method="POST">
-		<button type="submit" name="accion" value="exportar">
 		<input type="hidden" name="usuario" value="<%=usuario%> ">
+		<button type="submit" name="accion" value="exportar">
+		
 		EXPORTAR A CSV
+		</button>
+			<form action="Servlet" method="POST">
+		<input type="hidden" name="usuario" value="<%=usuario%> ">
+		<button type="submit" name="accion" value="crearhtml">
+		
+		CREAR HTML
 		</button>
 		</form>
 		
