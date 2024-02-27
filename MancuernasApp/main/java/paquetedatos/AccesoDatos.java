@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import paqueteobjetos.Ejercicio;
 import paqueteobjetos.Entrenamiento;
+import paqueteobjetos.PintarHTML;
 
 public class AccesoDatos {
 	private static Connection c=null;
@@ -184,6 +185,25 @@ public class AccesoDatos {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+
+	public static void crearHTML(String usuario) {
+		// TODO Auto-generated method stub
+		String html="<html><head><title>ENTRENOS DE "+usuario+"</title></head>\n";
+		html+="<body><h1>Entrenos de "+usuario+"</h1>\n";
+		html+="<br>";
+		html+=PintarHTML.crearTabla(recuperarEntrenos(usuario));
+		html+="</body></html>\n";
+		try {
+			FileWriter fw=new FileWriter("C:\\datos\\entrenos.html");
+			fw.write(html);
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 
